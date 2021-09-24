@@ -50,7 +50,7 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listFilter = 'cart';
+    this.listFilter = '';
   }
 
   performFilter(): IProduct[] {
@@ -58,5 +58,9 @@ export class ProductListComponent implements OnInit {
     return this.products.filter((product: IProduct) =>
       product.productName.toLowerCase().includes(this.listFilter.toLowerCase())
     );
+  }
+
+  onRatingClicked(message: string): void {
+    this.pageTitle = 'Product List: ' + message;
   }
 }
