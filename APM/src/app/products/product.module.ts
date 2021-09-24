@@ -6,11 +6,9 @@ import { ProductDetailGuard } from './product-detail.guard';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    ProductListComponent,
-    ProductDetailComponent,
-  ],
+  declarations: [ProductListComponent, ProductDetailComponent],
   imports: [
+    // .forChild so Angular doesn't register a second instance of the router
     RouterModule.forChild([
       { path: 'products', component: ProductListComponent },
       // canActivate takes array of all guards to activate
@@ -20,7 +18,7 @@ import { SharedModule } from '../shared/shared.module';
         component: ProductDetailComponent,
       },
     ]),
-    SharedModule
+    SharedModule,
   ],
 })
 export class ProductModule {}
