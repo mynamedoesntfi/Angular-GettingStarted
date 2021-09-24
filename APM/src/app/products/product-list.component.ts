@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
   }
   set listFilter(value: string) {
     this._listFilter = value;
-    console.log('In setter: ', value);
+    this.filteredProducts = this.performFilter();
   }
 
   products: IProduct[] = [
@@ -43,6 +43,7 @@ export class ProductListComponent implements OnInit {
       imageUrl: 'assets/images/garden_cart.png',
     },
   ];
+  filteredProducts: IProduct[] = [];
 
   toggleImage(): void {
     this.showImage = !this.showImage;
@@ -50,5 +51,12 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.listFilter = 'cart';
+  }
+
+  performFilter(): IProduct[] {
+    // Make case insensitive (unlike pluralsight course)
+    return this.products.filter((product: IProduct) =>
+      product.productName.toLowerCase().includes(this.listFilter.toLowerCase())
+    );
   }
 }
