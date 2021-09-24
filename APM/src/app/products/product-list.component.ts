@@ -54,7 +54,7 @@ export class ProductListComponent implements OnInit {
   }
 
   performFilter(): IProduct[] {
-    // Make case insensitive (unlike pluralsight course)
+    // Make case insensitive
     return this.products.filter((product: IProduct) =>
       product.productName.toLowerCase().includes(this.listFilter.toLowerCase())
     );
